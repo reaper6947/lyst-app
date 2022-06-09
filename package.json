@@ -1,0 +1,19 @@
+{
+  "name": "lyst-app",
+  "version": "1.0.0",
+  "description": "a simple app for making lists that can be shared and edited with others",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reaper6947/null.git"
+  },
+  "author": "mahid atif hosain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reaper6947/null/issues"
+  },
+  "homepage": "https://github.com/reaper6947/null#readme"
+}
