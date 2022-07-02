@@ -4,16 +4,25 @@
   "description": "a simple app for making lists that can be shared and edited with others",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reaper6947/null.git"
+    "url": "git+https://github.com/reaper6947/lyst-app.git"
   },
   "author": "mahid atif hosain",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/reaper6947/null/issues"
   },
-  "homepage": "https://github.com/reaper6947/null#readme"
+  "homepage": "https://github.com/reaper6947/lyst-app#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.1"
+  }
 }
