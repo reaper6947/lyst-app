@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 class="info"> <%= //err %> </h2>
+        </div>
+        <form id="form" class="form" action="/api/register" method="POST">
+            <div class="form-control">
+
+                <label for="username">
+                    <div class="label-name">Username</div>
+                    <img class="icon fas fa-check-circle" src="../svg/check-circle.svg" alt="">
+                    <img class="icon fas fa-exclamation-circle" src="../svg/exclamation-circle.svg" alt="">
+                </label>
+                <input type="text" placeholder="Username" name="username" id="username" minlength="3" required />
+            </div>
+            <div class="form-control">
+
+                <label for="password">
+                    <div class="label-name">Password</div>
+                    <img class="icon fas fa-check-circle" src="../svg/check-circle.svg" alt="">
+                    <img class=" icon fas fa-exclamation-circle" src="../svg/exclamation-circle.svg" alt="">
+                </label>
+                <input type="password" placeholder="Password" name="password" id="password" maxlength="20" required />
+            </div>
+
+            <button id="submitBtn" type="submit" >Submit</button>
+
+        </form>
+    </div>
+</body>
+</html>
