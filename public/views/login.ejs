@@ -9,9 +9,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <h2 class="info"> <%= //err %> </h2>
+            <h2 class="info"> <%= err %> </h2>
         </div>
-        <form id="form" class="form" action="/api/register" method="POST">
+        <form id="form" class="form" action="/api/login" method="POST">
             <div class="form-control">
 
                 <label for="username">
@@ -32,7 +32,7 @@
             </div>
 
             <button id="submitBtn" type="submit" >Submit</button>
-
+            <div>dont have account ? <a href="/api/register">register!!</a></div>
         </form>
     </div>
 </body>
