@@ -5,7 +5,7 @@ const get = (req, res) => {
   res.render("register", { err: "register" });
 };
 
-const regUserSave = async (req, res, next) => {
+const UserSave = async (req, res, next) => {
   try {
     const userExists = await User.exists({ username: req.body.username });
     if (userExists) {
@@ -24,9 +24,8 @@ const post = (req, res) => {
   console.log(req.body, "post");
   res.redirect("/api/login");
 };
+
 module.exports = {
-  get,
-  regValidate,
-  regUserSave,
-  post,
-};
+  "get": [get],
+  "post":[regValidate,UserSave,post]
+}
