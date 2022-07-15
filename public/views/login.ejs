@@ -11,35 +11,37 @@
 
 <body>
     <div class="container">
-        <div class="header">
-            <h2 class="info">
-                <%= err %>
-            </h2>
-        </div>
         <form id="form" class="form" action="/api/login" method="POST">
-            <div class="form-control">
-
-                <label for="username">
-                    <div class="label-name">Username</div>
-                    <!-- <img class="icon fas fa-check-circle" src="../svg/check-circle.svg" alt="">
-                    <img class="icon fas fa-exclamation-circle" src="../svg/exclamation-circle.svg" alt=""> -->
-                </label>
-                <input type="text" placeholder="Username" name="username" id="username" minlength="3" required />
-            </div>
-            <div class="form-control">
-
-                <label for="password">
-                    <div class="label-name">Password</div>
-                    <!-- <img class="icon fas fa-check-circle" src="../svg/check-circle.svg" alt="">
-                    <img class=" icon fas fa-exclamation-circle" src="../svg/exclamation-circle.svg" alt=""> -->
-                </label>
-                <input type="password" placeholder="Password" name="password" id="password" maxlength="20" required />
+            <div class="header text-center mb-3 info">
+                <h2 class="info ">
+                    <%= err %>
+                </h2>
             </div>
 
-            <button id="submitBtn" type="submit">Submit</button>
-            <div>dont have account ? <a href="/api/register">register!!</a></div>
+            <!-- username input -->
+            <div class="form-outline mb-4">
+                <input type="text" class="form-control" placeholder="Username" name="username" id="username"
+                    minlength="3" required />
+                <label class="form-label" for="username">username</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" class="form-control" placeholder="Password" name="password" id="password"
+                    maxlength="20" required />
+                <label class="form-label" for="Password">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">login</button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>not a member? <a href="/api/register">register</a></p>
+            </div>
         </form>
     </div>
+
     <%- include("js") -%>
 </body>
 

@@ -27,7 +27,7 @@ const loginUser = async (req, res, next) => {
 };
 
 const post = (req, res) => {
-  const { username } = req.signedCookies;
+  const username  = req.signedCookies.username;
   res.redirect(`/u/${username}`);
 };
 
