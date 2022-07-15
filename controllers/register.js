@@ -1,5 +1,5 @@
 const { regValidate } = require("../middlewares/userCredValidate");
-const User = require("../models/user");
+const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const get = (req, res) => {
   res.render("register", { err: "register" });

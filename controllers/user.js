@@ -4,7 +4,7 @@ const get = (req, res, next) => {
     const {userId} = req.params
     if (req.loggedIn) {
         if (req.signedCookies.username == userId) {
-            res.render("user")
+            res.render("user",{userId})
         } else {
             res.redirect("/api/login")
         }

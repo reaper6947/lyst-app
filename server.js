@@ -20,7 +20,7 @@ const homeRoute = require("./routes/homeRoute");
 const logoutRoute = require("./routes/logoutRoute");
 const userRoute = require("./routes/userRoute")
 
-app.use("/",userRoute)
+app.use("/u/",userRoute)
 app.use("/api/", registerRoute);
 app.use("/api/", loginRoute);
 app.use("/api/", logoutRoute);
