@@ -1,7 +1,7 @@
 const options = {
   signed: true,
   httpOnly: true,
-  maxAge: 1000 * 60 * 20,
+  maxAge: 1000 * 60 * 200,
   sameSite: true,
 };
 
