@@ -1,7 +1,7 @@
 const options = {
   signed: true,
   httpOnly: true,
-  maxAge: 1000 * 60 * 200,
+  maxAge: 1000 * 60 * 2000000,
   sameSite: true,
 };
 
@@ -13,26 +13,21 @@ const loginStatus = (req, res, next) => {
     console.log(req.signedCookies.username, " has logged in", "req");
     req.loggedIn = true;
   } else if (
-    "signedCookies" in res &&
-    !(Object.keys(res.signedCookies).length === 0)
-  ) {
-    console.log(res.signedCookies.username, " has logged in", "res");
-    res.loggedIn = true;
-  } else if (
     "signedCookies" in req &&
     Object.keys(req.signedCookies).length === 0
   ) {
     console.log("no cookie data found");
-    res.loggedIn = false;
     req.loggedIn = false;
-    
   }
 
   next();
 };
+
 const setUserCookie = (req, res, next) => {
   res.cookie("username", `${req.username}`, options);
-
+  res.loggedIn = true
+  res.username = req.username
+  console.log(`${req.username} has logged in res`);
   next();
 };
 module.exports = { loginStatus, setUserCookie };

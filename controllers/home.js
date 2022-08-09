@@ -1,10 +1,10 @@
 const { loginStatus } = require("../middlewares/cookie");
 
-const get = (req, res, next) => {
+const getfunc = (req, res, next) => {
   res.render("home");
 };
 
 module.exports = {
-  get: [loginStatus, get],
+  get: [loginStatus, getfunc],
   post: [],
 };

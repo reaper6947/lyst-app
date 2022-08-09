@@ -5,3 +5,4 @@ const logout = require("../controllers/logout");
 router.get("/logout", ...logout.get);
 
 module.exports = router;
+

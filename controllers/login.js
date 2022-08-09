@@ -3,7 +3,7 @@ const { loginStatus, setUserCookie } = require("../middlewares/cookie");
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 
-const get = (req, res) => {
+const getfunc = (req, res) => {
   res.render("login", { err: "login" });
 };
 
@@ -26,15 +26,12 @@ const loginUser = async (req, res, next) => {
   }
 };
 
-const post = (req, res) => {
-  const username  = req.signedCookies.username;
+const postfunc = (req, res) => {
+  const username = res.username;
   res.redirect(`/u/${username}`);
 };
 
 module.exports = {
-  get: [get],
-  post: [loginValidate, loginUser, setUserCookie, loginStatus, post],
+  get: [loginStatus, getfunc],
+  post: [loginValidate, loginUser, setUserCookie, postfunc],
 };
-
-
-

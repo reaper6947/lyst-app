@@ -21,7 +21,6 @@ const UserSave = async (req, res, next) => {
   }
 };
 const post = (req, res) => {
-  console.log(req.body, "post");
   res.redirect("/api/login");
 };
 

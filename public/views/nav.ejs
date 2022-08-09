@@ -1,13 +1,13 @@
 <nav class="navbar navbar-dark bg-dark rounded my-1 py-1 pr-0 flex-fill">
-    <a class="navbar-brand m-0 p-0 px-1" id="nav-username" href="/">
+    <a class="navbar-brand m-0 p-0 px-1" id="nav-username"  href="/">
         <%= userId %>
     </a>
 
     <form class="form-check-inline form-check align-middle mr-2">
-        <label class=" form-check-label m-0 p-0" for="exampleCheck1" id="labelDelete">
-            <input type="checkbox" class="form-check-input" id="inputDelete">
-            delete items
-        </label>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="editSwitch" onchange="editFunc(this)">
+            <label class="form-check-label text-white" for="flexSwitchCheckDefault">Edit</label>
+          </div>
 
     </form>
 

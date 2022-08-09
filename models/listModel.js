@@ -4,8 +4,9 @@ const listSchema = new mongoose.Schema(
     ID: String,
     author: String,
     title: String,
-    privacy: Boolean,
-    collaborators: [{ name: String,editor:Boolean,viewer:Boolean }],
+    isPrivate: Boolean,
+    description: String,
+    collaborators: [{ name: String, editor: Boolean }],
     items: [{}],
   },
   { timestamps: true }
