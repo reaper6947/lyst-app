@@ -6,8 +6,8 @@ const extractList = (obj) => {
     obj.ID = nanoid(10);
   }
 
-  const { ID, author, title, isPrivate, description, collaborators, items } =
-  obj;
+  const { ID, author, title, isPrivate, description, isMarked, collaborators, items } =
+    obj;
   //validation
   return {
     ID,
@@ -15,6 +15,7 @@ const extractList = (obj) => {
     title,
     isPrivate,
     description,
+    isMarked,
     collaborators,
     items,
   };

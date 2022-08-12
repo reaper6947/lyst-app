@@ -12,6 +12,7 @@ createApp({
         title: "",
         description: "",
         isPrivate: true,
+        isMarked: false,
         collaborators: [{}],
         items: [{}],
       },
@@ -72,9 +73,48 @@ createApp({
         console.log(err);
       }
     },
+    async updateList(list) {
+      const requestOptions = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ ...list })
+      };
+      try {
+        const response = await fetch(
+          `http://localhost:3000/u/${username}/update/${list.ID}`,
+          requestOptions
+        );
+        let data = await response.json()
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    sortList(e) {
+      e.preventDefault();
+      this.currentList.sort((a, b) => {
+        if (a.isMarked && !b.isMarked) {
+          return -1
+        }
+        if (!a.isMarked && b.isMarked) {
+          return 1
+        }
+        return 0
+      })
+     
+    },
 
     gotToList(item) {
-      window.location.href = window.location.origin + "/l/" + item.ID 
+      window.location.href = window.location.origin + "/l/" + item.ID
+    },
+    logout(e) {
+      e.preventDefault()
+      window.location = window.location.origin +"/api/logout"
+    },
+    formatDate(date) {
+      let newData = new Date(date)
+      return "Edited: " + newData.toLocaleString()
     }
   },
   async mounted() {
@@ -82,7 +122,9 @@ createApp({
       let response = await fetch(`http://localhost:3000/u/${username}/newList`)
       if (response.status >= 200 && response.status <= 200) {
         const data = await response.json()
+        // console.log(data)
         this.currentList = [...this.currentList, ...data]
+        
       } else {
         throw Error(response.statusText)
       }

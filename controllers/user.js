@@ -21,6 +21,7 @@ const newList = async (req, res, next) => {
     if ((req.signedCookies.username = userId)) {
       const newList = extractList(req.body);
       const savedList = new List(newList)
+      console.log(savedList)
       savedList.save()
       res.json(newList);
     }
@@ -57,9 +58,24 @@ const deleteList = async (req, res) => {
   
 }
 
+
+const updateListFunc = async (req, res) => {
+  const { userId, listId } = req.params;
+  if (req.loggedIn) {
+    if ((req.signedCookies.username = userId)) {
+      try {
+        let  updatedList = await List.findOneAndUpdate({ID:listId},req.body)
+        res.json(updatedList)
+
+      } catch (err) { console.log(err) }
+    }
+  }
+}
+
 module.exports = {
   get: [loginStatus, get],
   post: [loginStatus, newList],
   getLists: [loginStatus, getLists],
+  updateList:[loginStatus,updateListFunc],
   delete: [loginStatus, deleteList]
 };

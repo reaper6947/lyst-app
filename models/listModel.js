@@ -6,7 +6,8 @@ const listSchema = new mongoose.Schema(
     title: String,
     isPrivate: Boolean,
     description: String,
-    collaborators: [{ name: String, editor: Boolean }],
+    isMarked: Boolean,
+    collaborators: [{}],
     items: [{}],
   },
   { timestamps: true }

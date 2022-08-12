@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <%- include("js") -%>
+    <script defer src="https://unpkg.com/vue@3"></script>
+    <script defer src="../js/userVue.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("css") -%>
         <title>Document</title>
 </head>
 
-<body id="app">
+<body id="app" class="bg-light ">
     <%- include("nav") -%>
-        <div class="row row-cols-1 row-cols-md-3 g-3">
+        <div class="row row-cols-1 px-3 row-cols-md-3 g-3">
             <div class="col">
-                <div class="card border-success mb-3">
+                <div class="card bg-light border-success mb-3  ">
                     <div class="card-header bg-transparent border-success p-0">
                         <div class="input-group ">
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox" value="" :checked="titleCheck"
+                            <div class="input-group-text bg-light">
+                                <input class="form-check-input mt-0 " type="checkbox" value="" :checked="titleCheck"
                                     aria-label="list title">
 
                             </div>
-                            <input type="text" class="form-control" placeholder="enter title" v-model="newList.title"
-                                aria-label="list title">
+                            <input type="text" class="form-control bg-light" placeholder="enter title"
+                                v-model="newList.title" aria-label="list title">
                         </div>
 
                     </div>
@@ -41,31 +44,43 @@
 
 
             <div class="col" v-for="list in currentList">
-                <div class="card border-success mb-3">
-                    <div class="card-header bg-transparent text-center border-success ">
+                <div class="card  border-success mb-3 ">
+
+                    <span @click="list.isMarked=!list.isMarked;updateList(list)" 
+                        class="position-absolute top-0 start-100 translate-middle p-1 bg-info border border-light rounded-circle">
+                        <i class="bi" :class="{ 'bi-star-fill': list.isMarked ,'bi-star':!list.isMarked  }"></i>
+                        <span class="visually-hidden">marked</span>
+                    </span>
+                    <span class="position-absolute  top-0 start-50 text-center fw-light text-muted translate-middle badge border border-info rounded-pill text-dark bg-light">
+                        {{formatDate(list.updatedAt)}}
+                        <span class="visually-hidden">last edited</span>
+                      </span>
+                    <div class="card-header bg-transparent text-center  border-success ">
                         {{list.title}}
                     </div>
                     <div class="card-body text-success p-1">
-                        <p class="form-control card-text" id="new-text-area" placeholder="description" >
+                        <p class="form-control card-text" id="new-text-area" placeholder="description">
                             {{list.description}}
+                            
                         </p>
 
                     </div>
                     <div class="card-footer bg-transparent border-success  d-flex justify-content-between">
                         <button type="button" class="btn btn-primary  " @click=""><i class="bi bi-share-fill"></i>
                             share</button>
-                        <button type="button" class="btn btn-primary  " @click="deleteList(list)"><i class="bi bi-trash-fill"></i>
+                        <button type="button" class="btn btn-primary  " @click="deleteList(list)"><i
+                                class="bi bi-trash-fill"></i>
                             delete </button>
-                        <button type="button" class="btn btn-primary  " @click="gotToList(list)"><i class="bi bi-pencil-fill"></i> Edit</button>
+                        <button type="button" class="btn btn-primary  " @click="gotToList(list)"><i
+                                class="bi bi-pencil-fill"></i> Edit</button>
                     </div>
 
                 </div>
             </div>
         </div>
 
-        <%- include("js") -%>
-            <script src="https://unpkg.com/vue@3"></script>
-            <script defer src="../js/userVue.js"></script>
+        
+
 
 </body>
 
