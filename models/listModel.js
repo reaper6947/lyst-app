@@ -7,8 +7,8 @@ const listSchema = new mongoose.Schema(
     isPrivate: Boolean,
     description: String,
     isMarked: Boolean,
-    collaborators: [{}],
-    items: [{}],
+    collaborators: [],
+    items: [],
   },
   { timestamps: true }
 );

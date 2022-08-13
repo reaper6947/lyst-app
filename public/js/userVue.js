@@ -13,8 +13,8 @@ createApp({
         description: "",
         isPrivate: true,
         isMarked: false,
-        collaborators: [{}],
-        items: [{}],
+        collaborators: [],
+        items: [],
       },
       currentList: [],
     };

@@ -21,10 +21,11 @@ const registerRoute = require("./routes/registerRoute");
 const loginRoute = require("./routes/loginRoute");
 const homeRoute = require("./routes/homeRoute");
 const logoutRoute = require("./routes/logoutRoute");
-const userRoute = require("./routes/userRoute")
+const userRoute = require("./routes/userRoute");
+const listRoute = require("./routes/listRoute");
 
-
-app.use("/u/",userRoute)
+app.use("/u/", userRoute);
+app.use("/l/", listRoute);
 app.use("/api/", registerRoute);
 app.use("/api/", loginRoute);
 app.use("/api/", logoutRoute);

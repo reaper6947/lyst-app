@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <%- include("js") -%>
+        <script defer src="https://unpkg.com/vue@3"></script>
+        <script defer src="../js/authListVue.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%- include("css") -%>
+            <title>Document</title>
+    </head>
+<body id="app" , class="bg-light">
+    <nav class="navbar  border border-2 rounded  bg-info my-0 mt-1 mb-3 py-1 pr-0 flex-fill">
+        <div class="navbar-brand  p-0 px-1" id="nav-username"  href="/">
+            <%= userId %>
+        </div>
+    
+        <form class="form-check-inline form-check align-middle mr-2">
+            <div class="form-check form-switch">
+                <!-- <input class="form-check-input" type="checkbox" id="editSwitch" onchange="editFunc(this)">
+                <label class="form-check-label text-white" for="flexSwitchCheckDefault">Edit</label> -->
+                <button class="btn btn-outline-success border-primary fw-bold mx-3" @click="" type="submit">Sort</button>
+                <button class="btn btn-outline-success border-primary fw-bold mr-1" @click="logout" type="submit">logout</button>
+              </div>
+    
+        </form>
+    
+    </nav>
+</body>
+</html>

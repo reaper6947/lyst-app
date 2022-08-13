@@ -33,7 +33,7 @@ const getLists = async (req, res, next) => {
   const { userId } = req.params;
   if (req.loggedIn) {
     if (req.signedCookies.username == userId) {
-      const foundLists = await List.find({ username: req.body.username });
+      const foundLists = await List.find({ author: userId });
       res.json(foundLists)
     } else {
       res.redirect("/api/login");
