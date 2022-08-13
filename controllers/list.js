@@ -70,7 +70,25 @@ const getList = async (req, res, next) => {
 };
 
 
+const getListPublic = async (req, res, next) => {
+    const { listId } = req.params;
+    try {
+        const foundList = await List.findOne({ ID: listId });
+        if (foundList.isPrivate) {
+            res.redirect("/api/register")
+        } else {
+
+            res.json(foundList)
+        }
+
+    } catch (err) {
+        console.log(err)
+        res.send(err)
+    }
+};
+
 module.exports = {
     getListData: [loginStatus, getListData],
     getList: [loginStatus, getList],
+    getListPublic
 };
