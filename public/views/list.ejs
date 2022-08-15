@@ -26,8 +26,8 @@
 
                 <button class="btn btn-outline-success border-primary fw-bold mx-3 shadow-none" @click="sortItems"
                     type="submit" style="transition: none;">Sort</button>
-                <button class="btn btn-outline-success border-primary fw-bold mr-1" @click="logout"
-                    type="submit">logout</button>
+                <button class="btn btn-outline-success border-primary fw-bold mr-1" @click="login"
+                    type="submit">login</button>
             </div>
         </form>
 
@@ -45,21 +45,22 @@
             <li class="list-group-item d-flex justify-content-between align-items-start" v-for="item in list.items">
 
                 <div class="me-auto">
+                    <img @click="goToLink(item.text)" height="32" width="32" class="mx-2" :src="getFavicon(item.text)"  alt=""
+                        v-if="isValidUrl(item.text)">
                     <input type="text" class="border-0 font-monospace fw-normal" v-model="item.text"
                         :disabled="item.isEditable == false">
                 </div>
+
                 <span class=" px-1 bg-info border border-light rounded-circle">
                     <i class="bi" :class="{ 'bi-star-fill': item.isMarked ,'bi-star':!item.isMarked  }"></i>
                     <span class="visually-hidden">marked</span>
                 </span>
 
-
-
             </li>
 
         </ul>
         <div class="card-footer">
-
+            <span>editor list:</span>
             <span type="button" v-for="editor in list.collaborators" class="btn btn-info m-2 position-relative"
                 style="transition: none;">
                 {{editor}}

@@ -55,7 +55,11 @@ const deleteList = async (req, res) => {
       } catch (err) { console.log(err) }
     }
   }
-  
+
+}
+const getPublicLists = async (req, res) => {
+  const foundLists = await List.find({ isPrivate: false });
+  res.json(foundLists)
 }
 
 
@@ -64,7 +68,7 @@ const updateListFunc = async (req, res) => {
   if (req.loggedIn) {
     if ((req.signedCookies.username = userId)) {
       try {
-        let  updatedList = await List.findOneAndUpdate({ID:listId},req.body)
+        let updatedList = await List.findOneAndUpdate({ ID: listId }, req.body)
         res.json(updatedList)
 
       } catch (err) { console.log(err) }
@@ -76,6 +80,7 @@ module.exports = {
   get: [loginStatus, get],
   post: [loginStatus, newList],
   getLists: [loginStatus, getLists],
-  updateList:[loginStatus,updateListFunc],
+  publicLists: [getPublicLists],
+  updateList: [loginStatus, updateListFunc],
   delete: [loginStatus, deleteList]
 };

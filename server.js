@@ -17,11 +17,17 @@ app.use(express.static("public"));
 app.use(cookieParser(process.env.SECRET_SALT));
 app.use(cors())
 
+// registration route 
 const registerRoute = require("./routes/registerRoute");
+// login route 
 const loginRoute = require("./routes/loginRoute");
+// home route 
 const homeRoute = require("./routes/homeRoute");
+// logout  route 
 const logoutRoute = require("./routes/logoutRoute");
+// get user specific lists route 
 const userRoute = require("./routes/userRoute");
+// list route 
 const listRoute = require("./routes/listRoute");
 
 app.use("/u/", userRoute);

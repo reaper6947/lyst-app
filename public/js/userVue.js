@@ -43,7 +43,7 @@ createApp({
 
       try {
         const response = await fetch(
-          `http://localhost:3000/u/${username}/newList`,
+          `${window.location.origin}/u/${username}/newList`,
           requestOptions
         );
         const data = await response.json();
@@ -59,7 +59,7 @@ createApp({
       };
       try {
         const response = await fetch(
-          `http://localhost:3000/u/${username}/delete/${item.ID}`,
+          `${window.location.origin}/u/${username}/delete/${item.ID}`,
           requestOptions
         );
         let data = await response.json()
@@ -83,7 +83,7 @@ createApp({
       };
       try {
         const response = await fetch(
-          `http://localhost:3000/u/${username}/update/${list.ID}`,
+          `${window.location.origin}/u/${username}/update/${list.ID}`,
           requestOptions
         );
         let data = await response.json()
@@ -119,7 +119,8 @@ createApp({
   },
   async mounted() {
     try {
-      let response = await fetch(`http://localhost:3000/u/${username}/newList`)
+      
+      let response = await fetch(`${window.location.origin}/u/${username}/newList`)
       if (response.status >= 200 && response.status <= 200) {
         const data = await response.json()
         // console.log(data)

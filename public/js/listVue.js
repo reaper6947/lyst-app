@@ -5,16 +5,31 @@ const { createApp } = Vue;
 const app = createApp({
     data() {
         return {
-           
+
             list: {}
         }
     },
     methods: {
-        logout(e) {
+        login(e) {
             e.preventDefault()
-            window.location = window.location.origin + "/api/logout"
+            window.location = window.location.origin + "/api/login"
         },
-
+        isValidUrl(urlString) {
+            try {
+                return Boolean(new URL(urlString));
+            }
+            catch (e) {
+                return false;
+            }
+        },
+        goToLink(link) {
+            window.location.href = link
+        },
+        getFavicon(link) {
+            let tempUrl = new URL(link)
+            return tempUrl.origin+"/favicon.ico"
+            
+        },
         sortItems(e) {
             e.preventDefault()
 
@@ -33,8 +48,7 @@ const app = createApp({
     async mounted() {
         try {
             let urlListId = window.location.pathname.split("/l/")
-
-            let response = await fetch(`http://localhost:3000/l/p/${urlListId[1]}`)
+            let response = await fetch(`${window.location.origin}/l/p/${urlListId[1]}`)
             if (response.status >= 200 && response.status <= 200) {
                 const data = await response.json()
                 this.list = data

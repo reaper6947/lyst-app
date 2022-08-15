@@ -58,6 +58,22 @@ const app = createApp({
                 return 0
             })
         },
+        isValidUrl(urlString) {
+            try {
+                return Boolean(new URL(urlString));
+            }
+            catch (e) {
+                return false;
+            }
+        },
+        goToLink(link) {
+            window.location.href = link
+        },
+        getFavicon(link) {
+            let tempUrl = new URL(link)
+            return tempUrl.origin + "/favicon.ico"
+
+        },
 
         async updateList() {
 
@@ -70,7 +86,7 @@ const app = createApp({
             };
             try {
                 const response = await fetch(
-                    `http://localhost:3000/u/${currentUserId}/update/${this.list.ID}`,
+                    `${window.location.origin}/u/${currentUserId}/update/${this.list.ID}`,
                     requestOptions
                 );
                 let data = await response.json()
@@ -83,7 +99,7 @@ const app = createApp({
         try {
             let urlListId = window.location.pathname.split("/l/")
 
-            let response = await fetch(`http://localhost:3000/l/${currentUserId}/${urlListId[1]}`)
+            let response = await fetch(`${window.location.origin}/l/${currentUserId}/${urlListId[1]}`)
             if (response.status >= 200 && response.status <= 200) {
                 const data = await response.json()
                 this.list = data
